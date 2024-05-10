@@ -1,0 +1,9 @@
+1. ローカルのDifyをアップグレード
+git checkout main
+git pull origin main
+
+2. GCPにログイン
+ssh GCE-instance
+
+参照ページ
+https://note.com/jolly_dahlia842/n/nd90ecaa669c2
