@@ -1,9 +1,39 @@
 1. ローカルのDifyをアップグレード
-git checkout main
-git pull origin main
+git pull upstream main
+git push dify main
 
 2. GCPにログイン
 ssh GCE-instance
+パスワード：いつもの
+
+3. パスの移動
+cd dify/docker
+
+4. pullリクエスト
+git pull origin main
+
+5. 仮想マシンにdocker composeのインストール
+Docker Composeをダウンロードする前に格納先のフォルダを作成します。
+mkdir -p $HOME/bin
+
+Docker Composeをインストールします。今回は1.29.2を使用します。
+docker run docker/compose:1.29.2 version
+
+docker-composeを使えるようにするためにエイリアスを設定します。
+echo alias docker-compose="'"'docker run --rm \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v "$PWD:$PWD" \
+-w="$PWD" \
+docker/compose:1.29.2'"'" >> ~/.bashrc
+
+最後にターミナルを再起動するコマンドを実行します。
+source ~/.bashrc
+
+6. dockerを落とす
+docker-compose down
+
+7. dockerの再起動
+docker-compose up -d
 
 参照ページ
 https://note.com/jolly_dahlia842/n/nd90ecaa669c2
