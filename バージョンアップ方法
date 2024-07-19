@@ -1,3 +1,6 @@
+0. dockerを落とす
+docker-compose down
+
 1. ローカルのDifyをアップグレード
 git pull upstream main
 git push dify main
